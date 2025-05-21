@@ -1,6 +1,7 @@
 use load_balancer_in_rust::{LoadBalancer, Strategy};
 
-fn main() {
+#[tokio::main]
+async fn main() {
     LoadBalancer::new(
         9090,
         Strategy::RoundRobin,
@@ -11,5 +12,5 @@ fn main() {
             "127.0.0.1:8083",
         ],
     )
-    .start();
+    .start().await;
 }
